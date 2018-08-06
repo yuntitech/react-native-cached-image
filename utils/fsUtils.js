@@ -36,7 +36,7 @@ function ensurePath(path) {
         })
         .catch(err => {
             // ignore folder already exists errors
-            if (err.message.includes('already exists')) {
+            if (err.message.includes('already exists') || 'EEXIST' === err.code) {
                 return;
             }
             throw err;
