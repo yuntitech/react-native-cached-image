@@ -46,7 +46,7 @@ class CachedImage extends React.Component {
     static propTypes = {
         renderImage: PropTypes.func.isRequired,
         activityIndicatorProps: PropTypes.object.isRequired,
-
+        reDownloadWhenFileMissed: PropTypes.bool.isRequired,
         // ImageCacheManager options
         ...ImageCacheManagerOptionsPropTypes,
     };
@@ -54,6 +54,7 @@ class CachedImage extends React.Component {
     static defaultProps = {
             renderImage: props => (<ImageBackground imageStyle={props.style} ref={CACHED_IMAGE_REF} {...props} />),
             activityIndicatorProps: {},
+            reDownloadWhenFileMissed: true
     };
 
     static contextTypes = {
@@ -99,6 +100,15 @@ class CachedImage extends React.Component {
     componentWillReceiveProps(nextProps) {
         if (!_.isEqual(this.props.source, nextProps.source)) {
             this.processSource(nextProps.source);
+        } else {
+            const url = _.get(nextProps.source, ['uri'], null);
+            const options = this.getImageCacheManagerOptions();
+            const imageCacheManager = this.getImageCacheManager();
+            imageCacheManager.isCachedURL(url, options).then(isCached => {
+              if (!isCached && this.props.reDownloadWhenFileMissed) {
+                this.processSource(nextProps.source);
+              }
+            });
         }
     }
 

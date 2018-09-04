@@ -69,6 +69,25 @@ module.exports = (defaultOptions = {}, urlCache = MemoryCache, fs = fsUtils, pat
     return {
 
         /**
+         * 判断某个 url 图片是否已经下载, 使用和 downloadAndCacheUrl一样的判断方法
+         * @param url
+         * @param options
+         * @returns {Promise}
+         */
+        isCachedURL(url, options = {}) {
+            let noCached = false;
+            return cacheUrl(url, options, filePath => {
+            //来到这说明执行了cacheUrl的 catch 方法, 即文件不存在或者过期了
+              noCached = true;
+            }).then(() => {
+            //总会执行这个方法, 所以根据是否已经执行 catch 判断缓存是否存在
+              return new Promise(resolve => {
+                resolve(!noCached);
+              });
+            });
+          },
+
+        /**
          * download an image and cache the result according to the given options
          * @param url
          * @param options
