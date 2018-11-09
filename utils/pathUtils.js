@@ -36,9 +36,30 @@ function generateCacheKey(url, useQueryParamsInCacheKey = true) {
     const parts = fileName.split('.');
     const fileType = parts.length > 1 ? _.toLower(parts.pop()) : '';
     const type = defaultImageTypes.includes(fileType) ? fileType : 'jpg';
-
-    const cacheable = filePath + fileName + type + getQueryForCacheKey(parsedUrl, useQueryParamsInCacheKey);
+    let cacheable;
+    //处理公式
+    const formulaFlag = 'cgi-bin/math.cgi?';
+    if (url.includes(formulaFlag)) {
+        const formulaParams = url.substring(url.indexOf(formulaFlag), url.length);
+        const mergeHashCode =
+            hashCode(formulaParams.substring(0, formulaParams.length / 2)) +
+            hashCode(
+                formulaParams.substring(formulaParams.length / 2, formulaParams.length)
+            );
+        cacheable = filePath + fileName + type + mergeHashCode;
+    }
+    else{
+        cacheable = filePath + fileName + type + getQueryForCacheKey(parsedUrl, useQueryParamsInCacheKey);
+    }
     return SHA1(cacheable) + '.' + type;
+}
+
+function hashCode(s) {
+    let i,h;
+    for (i = 0, h = 0; i < s.length; i++) {
+        h = (Math.imul(31, h) + s.charCodeAt(i)) | 0;
+    }
+    return h;
 }
 
 function getHostCachePathComponent(url) {
