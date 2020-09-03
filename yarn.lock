@@ -2,6 +2,13 @@
 # yarn lockfile v1
 
 
+"@react-native-community/async-storage@*":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@react-native-community/async-storage/-/async-storage-1.12.0.tgz#d2fc65bc08aa1c3e9514bbe9fe7095eab8e8aca3"
+  integrity sha512-y3zVxuVyiOxI8TXrvajmYfDbIt2vFNxzV5MiA28v15DQTxDk6uJH3rpc9my+la7u2Tiwt3PpdU2+59ZgZ4h7wA==
+  dependencies:
+    deep-assign "^3.0.0"
+
 "@react-native-community/netinfo@^4.1.1":
   version "4.1.1"
   resolved "https://registry.npmjs.org/@react-native-community/netinfo/-/netinfo-4.1.1.tgz#b4793b26662df42eeb9b4d20ec49129e75fa9773"
@@ -1430,6 +1437,13 @@ decamelize@^1.0.0, decamelize@^1.1.1:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/decamelize/-/decamelize-1.2.0.tgz#f6534d15148269b20352e7bee26f501f9a191290"
 
+deep-assign@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/deep-assign/-/deep-assign-3.0.0.tgz#c8e4c4d401cba25550a2f0f486a2e75bc5f219a2"
+  integrity sha512-YX2i9XjJ7h5q/aQ/IM9PEwEnDqETAIYbggmdDB3HLTlSgo1CxPsj6pvhPG68rq6SVE0+p+6Ywsm5fTYNrYtBWw==
+  dependencies:
+    is-obj "^1.0.0"
+
 deep-extend@~0.4.0:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/deep-extend/-/deep-extend-0.4.2.tgz#48b699c27e334bf89f10892be432f6e4c7d34a7f"
@@ -1438,9 +1452,10 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepmerge@^1.3.1:
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-1.5.0.tgz#00bc5b88fd23b8130f9f5049071c3420e07a5465"
+deepmerge@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-3.3.0.tgz#d3c47fd6f3a93d517b14426b0628a17b0125f5f7"
+  integrity sha512-GRQOafGHwMHpjPx9iCvTgpu9NojZ49q794EEL94JVEw6VaeA8XTUyBKvAkOOjBX9oJNiV6G3P+T+tihFjo2TqA==
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -2193,6 +2208,11 @@ is-number@^3.0.0:
   resolved "https://registry.yarnpkg.com/is-number/-/is-number-3.0.0.tgz#24fd6201a4782cf50561c810276afc7d12d71195"
   dependencies:
     kind-of "^3.0.2"
+
+is-obj@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-1.0.1.tgz#3e4729ac1f5fde025cd7d83a896dab9f4f67db0f"
+  integrity sha1-PkcprB9f3gJc19g6iW2rn09n2w8=
 
 is-posix-bracket@^0.1.0:
   version "0.1.1"
@@ -3017,11 +3037,12 @@ minimist@~0.0.1:
   dependencies:
     minimist "0.0.8"
 
-mock-async-storage@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/mock-async-storage/-/mock-async-storage-1.0.3.tgz#e097e255af27d0276deba3d7a5022d6f47440b96"
+mock-async-storage@*:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/mock-async-storage/-/mock-async-storage-2.2.0.tgz#c3f3edd62eaea372bc91d9d39271ece253b8b313"
+  integrity sha512-HpMe9KNKxlyiRyOXFBrEOSQ1Idcoz1k5W5J+6C8zYzjasSxFJlrA5wVVjPR4U6zJJtrbuky1c0s1o3whzgghSQ==
   dependencies:
-    deepmerge "^1.3.1"
+    deepmerge "^3.3.0"
 
 morgan@~1.6.1:
   version "1.6.1"
@@ -3509,11 +3530,12 @@ react-devtools-core@^2.5.0:
     shell-quote "^1.6.1"
     ws "^2.0.3"
 
-react-native-clcasher@1.0.0:
+"react-native-clcasher@https://github.com/yuntitech/react-native-clcasher.git":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/react-native-clcasher/-/react-native-clcasher-1.0.0.tgz#1f77fb1a4abc6a0337ef19c991e04f19af6d2789"
+  resolved "https://github.com/yuntitech/react-native-clcasher.git#5117e2b80b850018a11357a0ce45136cf388a0bc"
   dependencies:
-    mock-async-storage "^1.0.3"
+    "@react-native-community/async-storage" "*"
+    mock-async-storage "*"
 
 react-native@^0.48.3:
   version "0.48.3"
@@ -3837,9 +3859,9 @@ rimraf@~2.2.6:
   version "2.2.8"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.2.8.tgz#e439be2aaee327321952730f99a8929e4fc50582"
 
-"rn-fetch-blob@https://github.com/yuntitech/rn-fetch-blob.git":
+"rn-fetch-blob@https://github.com/yuntitech/rn-fetch-blob.git#1d8066f2c95b7c1aabdb6cfc2448e8f770634cf6":
   version "0.10.11"
-  resolved "https://github.com/yuntitech/rn-fetch-blob.git#7d03d1541e7673c9449b33c6a5f707dac85b2891"
+  resolved "https://github.com/yuntitech/rn-fetch-blob.git#1d8066f2c95b7c1aabdb6cfc2448e8f770634cf6"
   dependencies:
     base-64 "0.1.0"
     glob "7.0.6"
