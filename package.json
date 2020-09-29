@@ -52,7 +52,7 @@
     "lodash": "4.17.4",
     "prop-types": "15.5.10",
     "react-native-clcasher": "https://github.com/yuntitech/react-native-clcasher.git",
-    "rn-fetch-blob": "https://github.com/yuntitech/rn-fetch-blob.git#1d8066f2c95b7c1aabdb6cfc2448e8f770634cf6",
+    "rn-fetch-blob": "https://github.com/yuntitech/rn-fetch-blob.git#8380696dcd8f46f9cbe68d73bac66bf47fa0dfe4",
     "url-parse": "1.1.9"
   },
   "devDependencies": {
